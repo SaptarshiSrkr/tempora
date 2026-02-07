@@ -1,0 +1,27 @@
+likelihood:
+  waiting_time_likelihood.WeibullLikelihood:
+    input_params: [k, logr]
+    data_file: "examples/nimmo_0.7.json"
+
+params:
+  k:
+    prior:
+      min: 0.01
+      max: 10
+    ref: 1.0
+    proposal: 0.1
+    latex: k
+  logr:
+    prior:
+      min: -5
+      max: 10
+    ref: 5
+    proposal: 0.1
+    latex: \log_{10}r\,(\mathrm{hr}^{-1})
+
+sampler:
+  mcmc:
+    Rminus1_stop: 0.01
+    max_tries: 1000
+
+output: chains/nimmo_0.7
